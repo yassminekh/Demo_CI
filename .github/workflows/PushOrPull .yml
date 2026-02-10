@@ -1,8 +1,7 @@
 name: Push or Pull Request
 
-on:
-  push:
-  pull_request:
+on: [push, pull_request]
+  
 
 # Variables d'environnement AU TOP NIVEAU
 env:
@@ -17,6 +16,7 @@ jobs:
     steps:
       - name: Afficher message push
         run: echo "${{ env.PUSH_MESSAGE }}"
+        # run: echo "$PUSH_MESSAGE"  # Alternative syntaxe pour accéder à la variable d'environnement
 
   pr-job:
     runs-on: ubuntu-latest
