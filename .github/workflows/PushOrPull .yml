@@ -1,0 +1,27 @@
+name: Exercice 2 - Push or Pull Request
+
+on:
+  push:
+  pull_request:
+
+# Variables d'environnement AU TOP NIVEAU
+env:
+  PUSH_MESSAGE: "C'est un push !"
+  PR_MESSAGE: "C'est une pull request !"
+
+jobs:
+  push-job:
+    runs-on: ubuntu-latest
+    # Ce job s'exécute SEULEMENT si l'événement est un push
+    if: github.event_name == 'push'
+    steps:
+      - name: Afficher message push
+        run: echo "${{ env.PUSH_MESSAGE }}"
+
+  pr-job:
+    runs-on: ubuntu-latest
+    # Ce job s'exécute SEULEMENT si l'événement est une pull request
+    if: github.event_name == 'pull_request'
+    steps:
+      - name: Afficher message pull request
+        run: echo "${{ env.PR_MESSAGE }}"
