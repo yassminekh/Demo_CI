@@ -1,4 +1,4 @@
-name: Exercice 2 - Push or Pull Request
+name: Push or Pull Request
 
 on:
   push:
