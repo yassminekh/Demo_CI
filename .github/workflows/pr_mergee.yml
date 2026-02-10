@@ -1,0 +1,13 @@
+name: PR Fermée/Mergée
+
+on:
+  pull_request:
+    types: [closed]  # Se déclenche quand une PR est fermée
+
+jobs:
+  notify_merged:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true  # Vérifie que la PR est mergée
+    steps:
+      - name: PR mergée
+        run: echo "La PR a été mergée"
