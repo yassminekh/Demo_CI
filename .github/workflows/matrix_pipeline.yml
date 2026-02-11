@@ -15,4 +15,10 @@ jobs:
 
     steps:
       - name: Afficher la phrase
-        run: echo "${{ matrix.nom }} mange une ${{ matrix.fruit }}, et il adore ça !"
+        run: |
+          if [ "${{ matrix.nom }}" = "Sarah" ]; then
+            echo "${{ matrix.nom }} mange une ${{ matrix.fruit }}, et elle adore ça !"
+            else
+            echo "${{ matrix.nom }} mange une ${{ matrix.fruit }}, et il adore ça !"
+            fi
+
