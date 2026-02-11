@@ -18,7 +18,7 @@ jobs:
         run: |
           if [ "${{ matrix.nom }}" = "Sarah" ]; then
             echo "${{ matrix.nom }} mange une ${{ matrix.fruit }}, et elle adore ça !"
-            else
+          else
             echo "${{ matrix.nom }} mange une ${{ matrix.fruit }}, et il adore ça !"
-            fi
+          fi
 
