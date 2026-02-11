@@ -1,0 +1,14 @@
+name: Workflow Suivant
+
+on:
+  workflow_run:
+    workflows: ["PR Fermée/Mergée"]  # Nom EXACT du workflow précédent
+    types:
+      - completed  # Se déclenche quand le workflow est terminé
+
+jobs:
+  message:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Message après workflow précédent
+        run: echo "Le workflow PR Fermée/Mergée est terminé"
