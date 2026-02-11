@@ -1,0 +1,20 @@
+name: Workflow Liés
+
+on:
+  workflow_dispatch:
+
+jobs:
+  job1:
+    name: Job 1 - Manuel
+    runs-on: ubuntu-latest
+    steps:
+      - name: Message Job 1
+        run: echo "Ceci est le job 1 lancé manuellement"
+
+  job2:
+    name: Job 2 - Après Job 1
+    runs-on: ubuntu-latest
+    needs: job1
+    steps:
+      - name: Message Job 2
+        run: echo "Ceci est le job 2 qui s'exécute après le job 1"
