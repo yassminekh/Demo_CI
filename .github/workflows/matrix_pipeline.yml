@@ -1,24 +1,37 @@
+# Nom du workflow (apparaît dans l’onglet Actions)
 name: Pipeline Matrix Fruits
 
+# Déclenchement manuel du workflow
 on:
   workflow_dispatch:
 
 jobs:
+  # Nom du job (identifiant interne)
   combinaison:
+    
+    # Machine virtuelle utilisée pour exécuter le job
     runs-on: ubuntu-latest
 
+    # Configuration de la stratégie de matrix
     strategy:
+      
+      # Si un job échoue, tous les autres s’arrêtent immédiatement
       fail-fast: true
+      
+      # Définition des variables de la matrix
       matrix:
+        
+        # Première liste : 4 fruits minimum
         fruit: [pomme, banane, fraise, orange]
+        
+        # Deuxième liste : 3 noms minimum
         nom: [Michel, Sarah, Karim]
 
     steps:
+      # Étape unique du job
       - name: Afficher la phrase
-        run: |
-          if [ "${{ matrix.nom }}" = "Sarah" ]; then
-            echo "${{ matrix.nom }} mange une ${{ matrix.fruit }}, et elle adore ça !"
-          else
-            echo "${{ matrix.nom }} mange une ${{ matrix.fruit }}, et il adore ça !"
-          fi
-
+        
+        # Commande exécutée dans le terminal
+        # ${{ matrix.nom }} et ${{ matrix.fruit }} 
+        # sont remplacés automatiquement par chaque combinaison possible
+        run: echo "${{ matrix.nom }} mange une ${{ matrix.fruit }}, et il adore ça !"
